@@ -1,7 +1,11 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Enable CORS for all routes
+app.use(cors());
 
 app.get('/api/insta', async (req, res) => {
   const userId = process.env.INSTA_USER_ID;
@@ -13,7 +17,7 @@ app.get('/api/insta', async (req, res) => {
     const data = await response.json();
     res.json(data);
   } catch (error) {
-    res.status(500).json({ error: `Failed to fetch data` });
+    res.status(500).json({ error: 'Failed to fetch data' });
   }
 });
 
