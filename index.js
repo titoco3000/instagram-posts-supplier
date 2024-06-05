@@ -12,7 +12,7 @@ app.get('/api/insta', async (req, res) => {
   const accessToken = process.env.INSTA_ACCESS_TOKEN;
   try {
     const response = await fetch(
-      `https://graph.instagram.com/${userId}/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink&access_token=${accessToken}`
+      `https://graph.instagram.com/${userId}/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink&&limit=5&access_token=${accessToken}`
     );
     const data = await response.json();
     res.json(data);
